@@ -1,0 +1,14 @@
+@import '../../assets/styles/Shared';
+
+.logo-container {
+  padding-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: $background-color-dark;
+  height: $containers-height;
+}
+
+.logo-img {
+  fill: $logo-fill-color;
+}

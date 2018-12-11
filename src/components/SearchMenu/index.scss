@@ -1,0 +1,22 @@
+@import '../../assets/styles/Shared';
+
+.menu-container {
+  background-color: $background-color-menu;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 15vh;
+}
+
+.search-input {
+  background-color: transparent;
+  border-color: $buttons-borders-theme-color;
+  font-size: 20px;
+  height: 40px;
+  color: white;
+}
+
+.add-car-button {
+  background-color: $buttons-borders-theme-color;
+  color: black;
+}

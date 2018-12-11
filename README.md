@@ -24,3 +24,15 @@ O teste deve ser escrito preferencialmente em *React*. No entanto, avaliaremos A
 
 Muito obrigado e boa sorte! 
 Esperamos tê-lo(a) por aqui em breve!
+
+
+## Considerações
+
+- Reparei que vocês usaram o create react app para gerar o template inicial, resolvi fazer uma config em cima disso inves de usar o create react app, pois acho mais facil de usar algumas configurações de preferencia minha assim.
+
+- Sobre o sistema estrutura de arquivos e pastas, reparei que já tinha um sistema que vocês estavam utilizando, eu meio que já conhecia o sistema, apesar que normalmente não uso esse sistema(já debati um pouco sobre esse modelo, basicamente não gosto por sar muito crtl+f do VSC para procurar arquivos) por preferencia pessoal, porem resolvi usar o mesmo sistema como era algo que já estava no projeto.
+
+- Resolvi usar antd, para terminar o projeto mais rapidamente
+
+- Tem algumas configurações legais que são possiveis no antd tipo a de dar overwrite nos estilos do antd com less e assim você conseguiria ter seus proprios "temas" do antd, o que me pareceu muito com o que vocês tinham pedido, porem  resolvi optei por usar sass com .scss e variaveis mesmo pra resolver o problema de poder mudar os estilos num arquivo só.
+

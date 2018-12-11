@@ -31,7 +31,11 @@ module.exports = {
         ]
       },
       {
-        test: /\.(css|scss)$/,
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
+      },
+      {
+        test: /\.scss$/,
         use: [ 'style-loader', 'css-loader', 'sass-loader' ]
       },
       {
@@ -44,11 +48,15 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.less$/,
+        use: ['style-loader','css-loader','less-loader']
       }
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx','scss'],
   },
   plugins: [
     new HtmlWebPackPlugin({
