@@ -1,13 +1,31 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import SearchMenu from '../SearchMenu';
+import { fetchCars } from '../../actions/carActions';
 import CarList from '../CarPanels/CarList';
 import CarDetails from '../CarPanels/CarDetails';
 
 class MainContentContainer extends Component {
+  static propTypes = {
+    onFetchCars: PropTypes.func,
+  }
+
+  static defaultProps = {
+    onFetchCars: () => {},
+  }
+
   state = {
     searchFilter: '',
     showList: true,
     typeDetails: '',
+  }
+
+  componentDidMount() {
+    const {
+      onFetchCars,
+    } = this.props;
+    onFetchCars();
   }
 
   changeState = (key, value) => {
@@ -41,4 +59,7 @@ class MainContentContainer extends Component {
   }
 }
 
-export default MainContentContainer;
+export default connect(
+  null,
+  { onFetchCars: fetchCars },
+)(MainContentContainer);
