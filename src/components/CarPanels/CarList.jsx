@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import {
   List,
 } from 'antd';
@@ -8,6 +9,26 @@ import './CarList.scss';
 const ListItem = List.Item;
 
 class CarList extends Component {
+  static propTypes = {
+    searchFilter: PropTypes.string,
+    onGoToForm: PropTypes.func,
+    carReducer: PropTypes.arrayOf({
+      id: PropTypes.string,
+      title: PropTypes.string,
+      model: PropTypes.string,
+      brand: PropTypes.string,
+      year: PropTypes.string,
+      color: PropTypes.string,
+      km: PropTypes.string,
+      price: PropTypes.string,
+    }),
+  }
+
+  static defaultProps = {
+    onGoToForm: () => {},
+    carReducer: [],
+    searchFilter: '',
+  }
 
   filterListData = (carList) => {
     const {

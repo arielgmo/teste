@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import {
   Form,
   Input,
@@ -20,6 +21,38 @@ const SelectOption = Select.Option;
 const FormItem = Form.Item;
 
 class CarDetails extends Component {
+  static propTypes = {
+    onAddCar: PropTypes.func,
+    onEditCar: PropTypes.func,
+    onDeleteCar: PropTypes.func,
+    onGoToList: PropTypes.func,
+    activeCar: PropTypes.shape({
+      id: PropTypes.string,
+      title: PropTypes.string,
+      model: PropTypes.string,
+      brand: PropTypes.string,
+      year: PropTypes.string,
+      color: PropTypes.string,
+      km: PropTypes.string,
+      price: PropTypes.string,
+    }),
+    type: PropTypes.string,
+    automakerReducer: PropTypes.arrayOf({
+      id: PropTypes.string,
+      name: PropTypes.string,
+    }),
+  }
+
+  static defaultProps = {
+    onAddCar: () => {},
+    onEditCar: () => {},
+    onDeleteCar: () => {},
+    onGoToList: () => {},
+    activeCar: {},
+    automakerReducer: [],
+    type: '',
+  }
+
   state = {
     id: '',
     title: '',

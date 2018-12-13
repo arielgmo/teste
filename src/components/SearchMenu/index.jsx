@@ -5,6 +5,7 @@ import {
   Input,
   Button,
 } from 'antd';
+import PropTypes from 'prop-types';
 
 import './index.scss';
 
@@ -41,6 +42,20 @@ const SearchMenu = (props) => {
       </Col>
     </Row>
   );
+};
+
+SearchMenu.propTypes = {
+  onChangeState: PropTypes.func,
+  goToAddCar: PropTypes.func,
+  onGoToList: PropTypes.func,
+  showList: PropTypes.bool,
+};
+
+SearchMenu.defaultProps = {
+  onChangeState: () => {},
+  goToAddCar: () => {},
+  onGoToList: () => {},
+  showList: false,
 };
 
 export default SearchMenu;
