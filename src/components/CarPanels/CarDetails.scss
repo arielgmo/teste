@@ -1,0 +1,58 @@
+@import '../../assets/styles/Shared';
+
+.car-form-container {
+  padding-top: 30px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.borderless-button {
+  color: $text-color;
+  font-size: $text-size;
+  font-weight: $text-title-weight;
+  border: none;
+  background-color: transparent;
+  margin-bottom: 30px;
+}
+
+.car-form-input {
+  color: $text-color;
+  font-size: $text-size;
+  font-weight: $text-weight;
+  background-color: $background-color-inputs;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid 1px $text-color;
+  margin-bottom: 20px;
+  border-radius: 0px;
+}
+
+.car-form-select {
+  color: $text-color;
+  font-size: $text-size;
+  font-weight: $text-weight;
+  margin-bottom: 20px;
+  border-radius: 0px;
+}
+
+// the way antd works, would be hard to make it another way.
+.ant-select-selection {
+  background: $background-color-inputs;
+}
+
+.car-form-button {
+  color: black;
+}
+
+.car-form-button-transparent {
+  background: $background-color-inputs;
+  color: $text-color;
+  margin-right: 20px;
+}
+
+.car-form-buttons-group-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}

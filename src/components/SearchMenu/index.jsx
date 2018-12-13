@@ -11,7 +11,9 @@ import './index.scss';
 const SearchMenu = (props) => {
   const {
     onChangeState,
-    addCar,
+    goToAddCar,
+    showList,
+    onGoToList,
   } = props;
 
   return (
@@ -24,9 +26,18 @@ const SearchMenu = (props) => {
         />
       </Col>
       <Col span={2}>
-        <Button className="add-car-button" size="large" onClick={() => addCar('add')}>
-          Cadastrar
-        </Button>
+        {showList
+          ? (
+            <Button className="add-car-button" size="large" onClick={() => goToAddCar('add')}>
+              Cadastrar
+            </Button>
+          )
+          : (
+            <Button className="add-car-button" size="large" onClick={() => onGoToList()}>
+              Voltar
+            </Button>
+          )
+        }
       </Col>
     </Row>
   );

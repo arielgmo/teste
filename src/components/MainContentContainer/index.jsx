@@ -3,29 +3,36 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import SearchMenu from '../SearchMenu';
 import { fetchCars } from '../../actions/carActions';
+import { fetchAutomakers } from '../../actions/automakerActions';
 import CarList from '../CarPanels/CarList';
 import CarDetails from '../CarPanels/CarDetails';
+import './index.scss';
 
 class MainContentContainer extends Component {
   static propTypes = {
     onFetchCars: PropTypes.func,
+    onFetchAutomakers: PropTypes.func,
   }
 
   static defaultProps = {
     onFetchCars: () => {},
+    onFetchAutomakers: () => {},
   }
 
   state = {
     searchFilter: '',
     showList: true,
     typeDetails: '',
+    activeCar: {},
   }
 
   componentDidMount() {
     const {
       onFetchCars,
+      onFetchAutomakers,
     } = this.props;
     onFetchCars();
+    onFetchAutomakers();
   }
 
   changeState = (key, value) => {
@@ -34,10 +41,18 @@ class MainContentContainer extends Component {
     });
   }
 
-  onGoToForm = (type) => {
+  onGoToForm = (type, car) => {
     this.setState({
       showList: false,
       typeDetails: type,
+      activeCar: car,
+    });
+  }
+
+  onGoToList = () => {
+    this.setState({
+      showList: true,
+      activeCar: {},
     });
   }
 
@@ -46,14 +61,33 @@ class MainContentContainer extends Component {
       searchFilter,
       showList,
       typeDetails,
+      activeCar,
     } = this.state;
     return (
       <div>
-        <SearchMenu addCar={this.onGoToForm} onChangeState={this.changeState} />
+        <SearchMenu
+          showList={showList}
+          goToAddCar={this.onGoToForm}
+          onChangeState={this.changeState}
+          onGoToList={this.onGoToList}
+        />
+        <div className="img-container" />
         {
           showList
-            ? <CarList search={searchFilter} onChangeState={this.changeState} />
-            : <CarDetails type={typeDetails} onChangeState={this.changeState} />}
+            ? (
+              <CarList
+                searchFilter={searchFilter}
+                onGoToForm={this.onGoToForm}
+              />
+            )
+            : (
+              <CarDetails
+                type={typeDetails}
+                onChangeState={this.changeState}
+                activeCar={activeCar}
+                onGoToList={this.onGoToList}
+              />
+            )}
       </div>
     );
   }
@@ -61,5 +95,8 @@ class MainContentContainer extends Component {
 
 export default connect(
   null,
-  { onFetchCars: fetchCars },
+  {
+    onFetchCars: fetchCars,
+    onFetchAutomakers: fetchAutomakers,
+  },
 )(MainContentContainer);
